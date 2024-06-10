@@ -36,11 +36,13 @@ public class PullingJump : MonoBehaviour
         isCanJump = false;
     }
     private Rigidbody rb;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         // rb = GetComponent<Rigidbody>();     //gameObjectは省略可能
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -48,6 +50,7 @@ public class PullingJump : MonoBehaviour
     [SerializeField]
     private float jumpPower = 10;
     private bool isCanJump;
+
     // Update is called once per frame
     void Update()
     {
@@ -64,6 +67,8 @@ public class PullingJump : MonoBehaviour
             if (dist.sqrMagnitude == 0) { return; }
             // 差分を標準化し、jumpPowerをかけ合わせた値を移動量とする
             rb.velocity = dist.normalized * jumpPower;
+
+            audioSource.Play();
         }
     }
 }
