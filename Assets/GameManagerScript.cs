@@ -7,6 +7,8 @@ public class GameManagerScript : MonoBehaviour
 {
     public string nextSceneName;
     public string titleScene;
+    public string nextStage;
+    public GameObject ClearText;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +21,28 @@ public class GameManagerScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(nextSceneName);
+            if (ClearText.activeInHierarchy)
+            {
+                SceneManager.LoadScene(nextStage);
+            }
+            else
+            {
+                SceneManager.LoadScene(nextSceneName);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(titleScene);
         }
+       /* if (ClearText.activeInHierarchy)
+        {
+            Debug.Log("Active");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(nextStage);
+            }
+        }*/
+
     }
 }

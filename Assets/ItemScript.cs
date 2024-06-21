@@ -5,6 +5,8 @@ using UnityEngine;
 public class ItemScript : MonoBehaviour
 {
 
+    public GameObject ClearText;
+    public GameObject NextText;
 
     private void OnTriggerStay(Collider other)
     {
@@ -16,9 +18,11 @@ public class ItemScript : MonoBehaviour
         Debug.Log("Exit");
     }
 
-    private void DestroySelf()
+    public void DestroySelf()
     {
         Destroy(gameObject);
+        ClearText.SetActive(true);
+        NextText.SetActive(true);
     }
 
     private Animator animator;
@@ -40,6 +44,5 @@ public class ItemScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }
